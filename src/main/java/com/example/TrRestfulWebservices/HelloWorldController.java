@@ -1,6 +1,7 @@
 package com.example.TrRestfulWebservices;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,13 @@ public class HelloWorldController {
 	@GetMapping(path = "/hello-world-bean")
 	public HelloWorldBean helloWorldBean() {
 		return new HelloWorldBean("Hello world Bean");
+	}
+	
+//	path variable example 
+//	At the time we call the uri we will send data to the uri it is automatically added to it.
+	@GetMapping(path = "/hello-world/path-variable/{name}")
+	public HelloWorldBean helloworldPathVariable(@PathVariable String name) {
+		return new HelloWorldBean(name);
 	}
 	
 }
