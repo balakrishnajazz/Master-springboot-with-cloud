@@ -1,4 +1,4 @@
-package com.example.TrRestfulWebservices;
+package com.example.TrRestfulWebservices.helloworld;
 
 public class HelloWorldBean {
 
