@@ -2,6 +2,7 @@ package com.example.TrRestfulWebservices.user;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,21 @@ public class UserDaoService {
 		
 		for(User user : users) {
 			if(user.getId() == id) {
+				return user;
+			}
+		}
+		return null;
+	}
+	
+//	Deleting a user
+	public User deleteById(int id) {
+		
+		Iterator iterator = users.iterator();
+		
+		while(iterator.hasNext()) {
+			User user = (User) iterator.next();
+			if(user.getId() == id) {
+				iterator.remove();
 				return user;
 			}
 		}
