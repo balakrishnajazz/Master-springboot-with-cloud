@@ -33,7 +33,7 @@ public class UserResourceBean {
 		
 		User user = service.findOne(id);
 		if(user== null) {
-			throw new UserNotFoundExcception("Not Found");
+			throw new UserNotFoundExcception("User Not Found");
 		}
 		return user;
 	}

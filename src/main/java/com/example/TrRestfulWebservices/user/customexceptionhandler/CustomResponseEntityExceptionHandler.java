@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.example.TrRestfulWebservices.user.UserNotFoundExcception;
+
 @ControllerAdvice
 @RestController
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler{
@@ -20,5 +22,12 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
 		ResponseException responseException = new ResponseException(new Date(),ex.getMessage(),request.getDescription(false));
 		
 		return new ResponseEntity(responseException,HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@ExceptionHandler(UserNotFoundExcception.class)
+	public final ResponseEntity<Object> handleUserNotFoundExcception(Exception ex, WebRequest request){
+		
+		ResponseException responseException = new ResponseException(new Date(),ex.getMessage(),request.getDescription(false));
+		return new ResponseEntity(responseException,HttpStatus.NOT_FOUND);
 	}
 }
